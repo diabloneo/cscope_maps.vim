@@ -131,6 +131,10 @@ if has("cscope")
     nmap <C-@><C-@>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
     nmap <C-@><C-@>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
+    " short cut key for inputing keyword by user
+    " these maps are borrowed from gtags-cscope.vim
+    nmap <C-\><SPACE> :cs find<SPACE>
+
 
     """"""""""""" key map timeouts
     "
@@ -159,6 +163,17 @@ if has("cscope")
     " timeoutlent (default: 1000 = 1 second, which is sluggish) is used.
     "
     "set ttimeoutlen=100
+    "
+
+"Find file cscope.out in cwd
+function! s:ReloadCscopeDB()
+    if filereadable("cscope.out")
+        call system('cscope -b -q -k')
+        silent cs reset
+    endif
+endfunction
+
+autocmd BufWritePost * call s:ReloadCscopeDB()
 
 endif
 
