@@ -168,7 +168,7 @@ if has("cscope")
 "Find file cscope.out in cwd
 function! s:ReloadCscopeDB()
     if filereadable("cscope.out")
-        call system('cscope -b -q -k')
+        call system('cscope -b -k')
         silent cs reset
     endif
 endfunction
