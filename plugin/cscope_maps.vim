@@ -21,6 +21,7 @@
 " Happy cscoping,
 "
 " Jason Duell       jduell@alumni.princeton.edu     2002/3/7
+" Neo Liu           diabloneo@gmail.com             2014/1/21
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -133,7 +134,15 @@ if has("cscope")
 
     " short cut key for inputing keyword by user
     " these maps are borrowed from gtags-cscope.vim
+    " quote some of the licence information here:
+    " File: gtags-cscope.vim
+    " Author: Tama Communications Corporation
+    " Version: 0.4
+    " Last Modified: January 16, 2011
+
     nmap <C-\><SPACE> :cs find<SPACE>
+    nmap <C-@><SPACE> :scs find<SPACE>
+    nmap <C-@><C-@><SPACE> :vert scs find<SPACE>
 
 
     """"""""""""" key map timeouts
