@@ -177,7 +177,13 @@ if has("cscope")
 "Find file cscope.out in cwd
 function! s:ReloadCscopeDB()
     if filereadable("cscope.out")
-        call system('cscope -b -k')
+        if filereadable("cscope.files")
+            call system('cscope -b -k')
+        elseif filereadable("cscope.po.out")
+            call system('cscope -b -q')
+        else
+            call system('cscope -b')
+        endif
         silent cs reset
     endif
 endfunction
@@ -185,5 +191,4 @@ endfunction
 autocmd BufWritePost * call s:ReloadCscopeDB()
 
 endif
-
 
